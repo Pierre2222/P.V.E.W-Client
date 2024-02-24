@@ -1,8 +1,8 @@
 from email.message import EmailMessage
 import smtplib
-def Send_Alert(subject):
+def Send_Alert(subject, target):
     sender = "PVEWOffical@outlook.com"
-    recipient = "akuforiji@pvamu.edu"
+    recipient = target
     message = "This is an Alert. We Suspect that your current surrounding are no longer safe, evacuation recommended"
 
     email = EmailMessage()
