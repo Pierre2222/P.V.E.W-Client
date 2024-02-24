@@ -13,19 +13,19 @@ class Air_Quality:
     @classmethod
     def check_air(self):
         if (self.SO2 > 250 or self.NO2 > 150 or self.PM10 > 100 or self.PM2_5 > 50 or self.O3 > 140 or self.CO > 12400 ):
-            email_functions.Send_Alert("Warning: Poor Air Quality")
+            email_functions.Send_Alert("Warning: Poor Air Quality", "Null")
         else:
             print("Request Works")
 
 def check_temp():
     if (config.data_temp - 273 > 38):
-        email_functions.Send_Alert("Warning: Extreme Heat")
+        email_functions.Send_Alert("Warning: Extreme Heat","Null")
     else:
         print("Request Works")
 
 def check_wind():
     if (config.data_ws > 17):
-        email_functions.Send_Alert("Warning: Violent Wind")
+        email_functions.Send_Alert("Warning: Violent Wind","Null")
     else:
         print("Request Works")
 
@@ -37,9 +37,4 @@ def check_rain():
     else:
         print("Request Works")
      
-curr = Air_Quality()
-curr.check_air()
-check_temp()
-check_wind()
-check_rain()
 
