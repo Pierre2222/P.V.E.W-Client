@@ -20,13 +20,19 @@ class MainWindow(qtw.QWidget):
         self.layout().addWidget(button)
         self.show()
         def Button_Press():
-            return entry.text
+            curr = Functions.Air_Quality()
+            post_label = qtw.QLabel(f""""
+            {Functions.check_wind(entry.text)}
+            {Functions.check_temp(entry.text)}
+            {Functions.check_rain(entry.text)}
+            {curr.check_air(entry.text)}
+                                    """)
+            self.layout().addWidget(post_label)
+            
+
             
 app = qtw.QApplication([])
 mw = MainWindow()
 
 app.exec_()
-
-email = mw.Butt_Press()
-print(email)
 
