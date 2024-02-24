@@ -1,5 +1,6 @@
 import config
 import email_functions
+
 class Air_Quality:
     SO2 = config.data_aq['list'][0]['components']['so2']
     CO = config.data_aq['list'][0]['components']['co']
@@ -11,29 +12,29 @@ class Air_Quality:
     NH3 = config.data_aq['list'][0]['components']['nh3']
 
     @classmethod
-    def check_air(self):
+    def check_air(self, email):
         if (self.SO2 > 250 or self.NO2 > 150 or self.PM10 > 100 or self.PM2_5 > 50 or self.O3 > 140 or self.CO > 12400 ):
-            email_functions.Send_Alert("Warning: Poor Air Quality", "Null")
+            email_functions.Send_Alert("Warning: Poor Air Quality", email)
         else:
             print("Request Works")
 
-def check_temp():
+def check_temp(email):
     if (config.data_temp - 273 > 38):
-        email_functions.Send_Alert("Warning: Extreme Heat","Null")
+        email_functions.Send_Alert("Warning: Extreme Heat",email)
     else:
         print("Request Works")
 
-def check_wind():
+def check_wind(email):
     if (config.data_ws > 17):
-        email_functions.Send_Alert("Warning: Violent Wind","Null")
+        email_functions.Send_Alert("Warning: Violent Wind",email)
     else:
         print("Request Works")
 
-def check_rain():
+def check_rain(email):
     if(config.data_r['list'][7]['pop'] == 0):
         print("Request Works, no rain")
     elif (config.data_r['list'][8]['3h'] > 50):
-        email_functions.Send_Alert("Warning: Flooding in 4 days")
+        email_functions.Send_Alert("Warning: Flooding incoming in 5 days", email)
     else:
         print("Request Works")
      
